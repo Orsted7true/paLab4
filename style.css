@@ -388,3 +388,59 @@ h1.title { z-index: 2; }
     border-radius: 10px;
   }
 }
+
+
+/* шарування — прямокутник за заголовком і фото */
+.hero-grid { position: relative; }
+h1.title { z-index: 2; }
+.art { z-index: 1; }
+.accent-rect { z-index: 0; }
+
+/* Точне налаштування для телефонів */
+@media (max-width: 560px) {
+  /* Заголовок */
+  h1.title {
+    font-size: 32px;
+    line-height: 1.1;
+    margin: 0 0 18px;
+    padding-left: 4px;
+  }
+
+  /* Бірюзовий блок: коротший і вище, щоб не заходив на GOALS */
+  .accent-rect {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 76px;          /* було 82px — підняв */
+    width: 140px;       /* було 150px — трохи вже */
+    height: 190px;      /* було 260px — стало значно нижче */
+    border-radius: 12px;
+  }
+
+  /* Картка з фото — тонша «рамка», менше перекриття */
+  .art {
+    margin-top: -12px;   /* було -20px */
+    padding: 8px;        /* було 10–20px */
+    border-radius: 10px;
+    box-shadow: 0 16px 28px rgba(0,0,0,.26);
+  }
+  .art img { border-radius: 8px; }
+
+  /* Запас перед першим пунктом, щоб не торкатись прямокутника */
+  .side .item:first-child { margin-top: 16px; }
+
+  /* дрібний текст */
+  .copy { font-size: 14px; }
+}
+
+/* Додатковий точний брейкпоінт під типові екрани 360–420px */
+@media (min-width: 360px) and (max-width: 420px) {
+  .accent-rect {
+    top: 78px;
+    width: 136px;
+    height: 180px;
+  }
+  .art { margin-top: -10px; }
+  .side .item:first-child { margin-top: 20px; }
+}
