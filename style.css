@@ -315,3 +315,76 @@ h1.title {
     font-size: 12px;
   }
 }
+
+/* додатково: керуємо шарами і позиціонуванням */
+.hero-grid { position: relative; }
+h1.title { z-index: 2; }
+.art { z-index: 1; }
+.accent-rect { z-index: 0; }
+
+/* PHONE — точне вирівнювання під макет */
+@media (max-width: 560px) {
+  header { padding: 14px 0; }
+
+  .icons { gap: 10px; }
+  .icon, .menu { width: 26px; height: 26px; font-size: 13px; }
+  .lines { width: 22px; height: 14px; }
+
+  .hero { padding: 6px 0 32px; }
+
+  /* Заголовок трохи менший і не впирається в лівий край */
+  h1.title {
+    font-size: 32px;
+    line-height: 1.1;
+    margin: 0 0 18px;
+    padding-left: 4px;
+  }
+
+  /* Бірюзовий прямокутник: по центру, коротший, не зачіпає секцію "GOALS" */
+  .accent-rect {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 82px;          /* підженуто під заголовок */
+    width: 150px;       /* як у прев’ю */
+    height: 260px;      /* зменшено, щоб не залазив на текст */
+    border-radius: 12px;
+  }
+
+  /* Картка з фото — менше «поля», м’якша тінь, щоб не виглядало як товста рамка */
+  .art {
+    margin-top: -20px;          /* перекриття з прямокутником */
+    padding: 10px;              /* було 16–20px — замінюємо на тонше поле */
+    border-radius: 10px;
+    box-shadow: 0 16px 28px rgba(0,0,0,.28);
+  }
+  .art img { border-radius: 8px; }
+
+  .hero-grid { gap: 22px; }
+
+  /* Відступи секцій, щоб все «дихало» і не в’їжджало під прямокутник */
+  .side .item { margin-bottom: 40px; }
+  .side .item:first-child { margin-top: 8px; }
+
+  .kicker { font-size: 16px; letter-spacing: 2px; color: #b7b1ff; }
+  .copy { font-size: 14px; }
+
+  .bar { padding: 18px 12px; font-size: 12px; }
+}
+
+/* TABLET — тримаємо центральний блок, але трохи вищий */
+@media (max-width: 980px) {
+  h1.title { font-size: 42px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+
+  .accent-rect {
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 76px;
+    width: 160px;
+    height: 320px;
+    border-radius: 10px;
+  }
+}
